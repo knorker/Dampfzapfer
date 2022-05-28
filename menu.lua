@@ -73,7 +73,7 @@ end
 
 levelCode = ""
 allowedKeys = {["0"]="0",["1"]="1",["2"]="2",["3"]="3",["4"]="4",["5"]="5",["6"]="6",["7"]="7",["8"]="8",["9"]="9",
-["kp0"]="0",["kp1"]="1",["kp2"]="2",["kp3"]="3",["kp4"]="4",["kp5"]="5",["kp6"]="6",["kp7"]="7",["kp8"]="kp8",["kp9"]="9"}
+["kp0"]="0",["kp1"]="1",["kp2"]="2",["kp3"]="3",["kp4"]="4",["kp5"]="5",["kp6"]="6",["kp7"]="7",["kp8"]="8",["kp9"]="9"}
 function menuKeyPressed (key, unicode)
 	if (allowedKeys[key] and #levelCode < 10) then
 		levelCode = levelCode .. allowedKeys[key]

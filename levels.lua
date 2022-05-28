@@ -2,7 +2,7 @@
 
 local autocomic = {
 	background = love.graphics.newImage("comic/bgauto_800x600.png"),
-	text = {"Zufälliger Passant: Was ist denn da los?","Fräulein: Ja sie sehen doch wie es dampft!", "Zufälliger Passant: Zum Glück habe Ich ein \n passendes Rohr dabei."},
+	text = {"ZufÃ¤lliger Passant: Was ist denn da los?","FrÃ¤ulein: Ja sie sehen doch wie es dampft!", "ZufÃ¤lliger Passant: Zum GlÃ¼ck habe Ich ein \n passendes Rohr dabei."},
 	steam = {
 	{x=555,y=350,},
 	{x=600,y=330,},
@@ -13,7 +13,7 @@ local autocomic = {
 	--[[
 local zaubercomic = {
 	background = love.graphics.newImage("comic/bgzauber_800x600.png"),
-	text = {"Zauberer: Oh nein! Mein Ofen ist kaputt.", "Wie soll Ich denn jetzt die Zombieköpfe einkochen?", "Das muss umbedingt repariert werden."},
+	text = {"Zauberer: Oh nein! Mein Ofen ist kaputt.", "Wie soll Ich denn jetzt die ZombiekÃ¶pfe einkochen?", "Das muss unbedingt repariert werden."},
 	steam = {
 	{x=380,y=140,},
 	{x=400,y=340,},
