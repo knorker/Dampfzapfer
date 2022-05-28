@@ -43,7 +43,7 @@ function comicLoop (dt)
 end
 
 function comicMousePressed (x,y,button)
-	if (button~="l") then return end
+	if (button~=1) then return end
 	--comic finished
 	if (comic.texti >= #comic.text) then 
 		startPlaying (game.selectedLevelNr)

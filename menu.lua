@@ -1,5 +1,5 @@
-require ("buttons.lua")
-require ("levels.lua")
+require ("buttons")
+require ("levels")
 
 menuButtons = {}
 levelSelectButtons = {}
@@ -50,7 +50,7 @@ function menuMousePressed (x,y, button)
 	print (x,y,button)
 	local clicked = clickedButton (menuButtons, x, y)
 	print (clicked)
-	if (clicked == "quit") then love.event.push("q") end
+	if (clicked == "quit") then love.event.push("quit") end
 	if (clicked == "startgame") then 
 		if (levels[game.selectedLevelNr] and levels[game.selectedLevelNr].comic) then
 			startComic (levels[game.selectedLevelNr].comic)

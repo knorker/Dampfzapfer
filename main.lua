@@ -71,12 +71,12 @@ game.aniFrame = 1
 
 local ingameButtons = {}
 
-require ("world.lua")
-require ("buttons.lua")
-require ("sound.lua")
-require ("menu.lua")
-require ("levels.lua")
-require ("comic.lua")
+require ("world")
+require ("buttons")
+require ("sound")
+require ("menu")
+require ("levels")
+require ("comic")
 
 
 function newPS (px,py, direction, PStype)
@@ -86,12 +86,12 @@ function newPS (px,py, direction, PStype)
 		p:setEmissionRate(20)
 		p:setSpeed(150, 200)
 		p:setDirection(math.rad((direction or 0) -90))
-		p:setGravity(0, 0)
-		p:setSize(0.4, 0.8) --0.4,0.4
-		p:setColor(255, 255, 255, 220,   200, 200, 200, 100)  -- r1, g1, b1, a1, r2, g2, b2, a2 )
+		p:setLinearAcceleration(0, 0)
+		p:setSizes(0.4, 0.8) --0.4,0.4
+		p:setColors(255, 255, 255, 220,   200, 200, 200, 100)  -- r1, g1, b1, a1, r2, g2, b2, a2 )
 		p:setPosition(px, py)
-		p:setLifetime(0.1)
-		p:setParticleLife(0.5)
+		p:setEmitterLifetime (0.1)
+		p:setParticleLifetime(0.5)
 		p:setSpin(-10, 10)
 		p:setSpread(.6)
 		p:stop()	
@@ -142,8 +142,8 @@ function love.load()
 	ANI.manometer = {images=loadMultiImage ("messgeraet_p", 8), }
 	largeFont = love.graphics.newFont( 20 )
 	love.graphics.setFont(largeFont)
-	love.graphics.setMode(resX, resY,true) --,true for fullscreen
-	love.mouse.setGrab(false)
+	love.window.setMode(resX, resY,{fullscreen=false}) --,true for fullscreen
+	love.mouse.setGrabbed (false)
 	initWorld ()
 	--startPlaying ()
 	--loadWorldFromData ("0,2,0,0  0,1,0,0  0,1,0,0  0,2,0,0  2,0,1,0  0,2,0,0  0,0,0,0  4,0,0,0  2,1,0,0  4,2,0,0  0,1,0,0  4,2,0,0  2,3,0,0  4,4,0,0  2,3,0,0  4,4,0,0  4,2,0,0  4,3,0,0  4,2,0,0  2,0,0,0  4,0,0,0  5,1,0,0  4,3,0,0  4,3,0,0  5,3,0,0  3,1,0,0  5,4,0,0  2,1,0,0  5,3,0,0  4,2,0,0  2,1,0,0  3,4,0,0  4,4,0,0  2,4,0,0  4,4,0,0  5,2,0,0  4,2,0,0  4,1,0,0  2,3,0,0  2,1,0,0  2,0,0,0  4,1,0,0  2,3,0,0  5,2,0,0  5,1,0,0  4,4,0,0  4,2,0,0  5,3,0,0  5,1,0,0  4,2,0,0  4,4,0,0  5,3,0,0  5,2,0,0  4,1,0,0  5,2,0,0  5,3,0,0  4,1,0,0  2,3,0,0  2,1,0,0  4,2,0,0  0,0,0,0  4,2,0,0  5,3,0,0  5,1,0,0  4,2,0,0  4,3,0,0  5,4,0,0  5,3,0,0  3,4,0,0  2,1,0,1  0,0,0,0  0,2,0,0  2,0,0,1  4,3,0,0  2,2,0,0  2,2,0,0  4,2,0,0  4,4,0,0  4,4,0,0  0,0,0,0  ")
@@ -191,13 +191,13 @@ function drawPlaying ()
 	if (world.closedCircuit) then
 		s = "Scheint dicht zu sein. Aber es ist noch nicht alles angeschlossen."
 	else
-		s = "Oh oh. Da kommt ja überall Dampf raus."
+		s = "Oh oh. Da kommt ja ueberall Dampf raus."
 	end	
 	if (game.levelWon) then 
 		local c = "Passwort: " .. levels[game.selectedLevelNr].code
 		love.graphics.setColor(255,0,0,255)
 		love.graphics.print(c, 480,560)
-		s="Gute Arbeit! Auf zur nächsten Aufgabe!" 
+		s="Gute Arbeit! Auf zur naechsten Aufgabe!" 
 	end
 	love.graphics.setColor(255,255,255,255)
 	love.graphics.print(s, 50,560)
@@ -215,7 +215,7 @@ function love.update(dt)
 	while (reLoop) do
 		reLoop=false
 		for i,v in ipairs(PS) do
-			if (v.fadeAway == true and v.ps:count() <1) then
+			if (v.fadeAway == true and v.ps:getCount() <1) then
 				table.remove (PS,i)
 				--PS[i]=nil
 				reLoop = true
@@ -299,8 +299,8 @@ end
 function love.mousepressed(x, y, button)	
 	if (game.status == PLAYING) then 
 		ingameMenuMousePressed (x,y, button)	
-		if (button=="l") then CTRL.mouseB1 = true end
-		if (button=="r") then
+		if (button==1) then CTRL.mouseB1 = true end
+		if (button==2) then
 			local x,y = getMouseTileXY ()
 			updateWorld ()
 			pressureFlow (x,y)

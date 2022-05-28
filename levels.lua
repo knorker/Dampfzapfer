@@ -24,10 +24,10 @@ local zaubercomic = {
 
 local tutorialcomic1 = {
 	background = love.graphics.newImage("comic/bglehrer_800x600.png"),
-	text = {"Willkommen zu Dampfzapfer.\nIch werde alles erklären, klicken sie um fortzufahren.", 
-	"Die meisten Geräte enthalten Dampf.\nEntweicht dieser, ist der Gerät kaputt.",
+	text = {"Willkommen zu Dampfzapfer.\nIch werde alles erklaeren, klicken sie um fortzufahren.", 
+	"Die meisten Geraete enthalten Dampf.\nEntweicht dieser, ist der Geraet kaputt.",
 	"Ein geschlossenes Rohrsystem ist oberste Pflicht.\nAn den Manometern muss ausserdem Druck anliegen.",
-	"Wenn die Rohre durcheinander kommen, muss der Gerät\n repariert werden. Klicke auf Rohrteile um sie zu drehen.\n",
+	"Wenn die Rohre durcheinander kommen, muss der Geraet\n repariert werden. Klicke auf Rohrteile um sie zu drehen.\n",
 	"Genug der Theorie, hier eine erste einfache Aufgabe!",
 	},
 	}
@@ -35,7 +35,7 @@ local tutorialcomic1 = {
 local tutorialcomic2 = {
 	background = love.graphics.newImage("comic/bglehrer_800x600.png"),
 	text = {"Ja, das ist gut! War doch ganz leicht.\n", 	
-	"Hast du dir das Passwort notiert? (es war 000123) \nGib es im Menu ein um weiterzumachen wo du aufgehört\nhast.",
+	"Hast du dir das Passwort notiert? (es war 000123) \nGib es im Menu ein um weiterzumachen wo du aufgehÃ¶rt\nhast.",
 	"Versuch doch mal das hier!",
 	},
 	}
@@ -43,14 +43,14 @@ local tutorialcomic2 = {
 local tutorialcomic3 = {
 	background = love.graphics.newImage("comic/bglehrer_800x600.png"),
 	text = {"Jetzt wird es ernst.\nRohre raus, Klassenarbeit!",	
-	"Löse die nächsten 3 Aufgaben und \ndu kannst dein Glück in der echten Welt zapfen.",
+	"LÃ¶se die nachsten 3 Aufgaben und \ndu kannst dein GlÃ¼ck in der echten Welt zapfen.",
 	},
 	}
 	
 local ninjacomic = {
 	background = love.graphics.newImage("comic/bgninja_800x600.png"),
 	text = {"Zumuko der Schreckliche: Meine Waschmaschine ist kaputt.\nDu sollst reich belohnt werden.",
-	"Doch wenn du versagst, wäscht Zumuko mit Blut.",
+	"Doch wenn du versagst, wÃ¤scht Zumuko mit Blut.",
 	},	
 	steam = {
 	{x=550,y=300,},
@@ -61,14 +61,14 @@ local ninjacomic = {
 	
 local piratcomic = {
 	background = love.graphics.newImage("comic/bgpirat_800x600.png"),
-	text = {"Arrrhoi Männer, wir haben das Versteck gefunden!\nLasst uns den Schatz heben.",	
-	"Keine von euch räudigen Landratten kann schwimmen?\nDann verzapft eine Pumpe, verdammt nochmal.",
+	text = {"Arrrhoi MÃ¤nner, wir haben das Versteck gefunden!\nLasst uns den Schatz heben.",	
+	"Keine von euch rÃ¤udigen Landratten kann schwimmen?\nDann verzapft eine Pumpe, verdammt nochmal.",
 	},
 	}
 	
 local gratulationcomic = {
 	background = love.graphics.newImage("comic/bglehrer_800x600.png"),
-	text = {"Tadadat Tada! Das wars.\n Danke fürs spielen.",
+	text = {"Tadadat Tada! Das wars.\n Danke fÃ¼rs spielen.",
 	"Gutholz (Code), Sir Maximillion (Grafik), tfg (Musik)",
 	"pOTJam Contest 24.02 - 11.03.2012",
 	"Da kommt nix mehr.",
