@@ -1,12 +1,12 @@
 --[[
 pressureFlow nachbarn:
-         0°
+         0
          0
          | 
-270°  3--X--1 90°
+270  3--X--1 90
          |
          2
-        180°		
+        180	
 
 --]]
 
@@ -71,6 +71,7 @@ game.aniFrame = 1
 
 local ingameButtons = {}
 
+local TLfres = require "tlfres"
 require ("world")
 require ("buttons")
 require ("sound")
@@ -142,7 +143,7 @@ function love.load()
 	ANI.manometer = {images=loadMultiImage ("messgeraet_p", 8), }
 	largeFont = love.graphics.newFont( 20 )
 	love.graphics.setFont(largeFont)
-	love.window.setMode(resX, resY,{fullscreen=false}) --,true for fullscreen
+	love.window.setMode(resX, resY,{fullscreen=false, resizable=true, minwidth=400, minheight=300})
 	love.mouse.setGrabbed (false)
 	initWorld ()
 	--startPlaying ()
@@ -156,25 +157,32 @@ function love.load()
 	toMenu()	
 end
 
-function love.draw()    
+function love.draw()
+	love.graphics.push()
+	TLfres.beginRendering(800, 600, false)
+	--love.graphics.setColor(0, 0, 1, 1)
+	--love.graphics.rectangle ("line", 0, 0, 800, 600)
+	
 	if (game.status==PLAYING) then drawPlaying () end
 	if (game.status==MENU) then drawMenu () end
 	if (game.status == COMIC) then drawComic() end
 	--love.graphics.print("game.aniFrame="..game.aniFrame or "nil", 600,550)
-	
-	love.graphics.setColor(255,255,255,255)	
+	love.graphics.setColor(1,1,1,1)
+	love.graphics.setBlendMode("alpha")
+	TLfres.endRendering({0.1,0,0.1, 1})
+	love.graphics.pop()
 end
 
 function drawPlaying ()	
 	--background
-	love.graphics.setColor(255, 255,255, 255)
+	love.graphics.setColor(1, 1,1, 1)
 	--love.graphics.rectangle("fill", 0, 0, 800, 600 )
 	love.graphics.draw(GFX.ingameFrame, 0,0)
 	drawWorld ()
 	if (isInWorld (p2t (CTRL.mouseX,CTRL.mouseY))) then
 		--love.mouse.setVisible(false)
 		drawTileHighLight (t2p (p2t (CTRL.mouseX,CTRL.mouseY)))
-		love.graphics.draw(GFX.wrench, love.mouse.getX()-tileSize/2, love.mouse.getY()-tileSize/2)
+		love.graphics.draw(GFX.wrench, CTRL.mouseX-tileSize/2, CTRL.mouseY-tileSize/2)
 	else
 		love.mouse.setVisible(true)
 	end
@@ -233,7 +241,7 @@ function love.update(dt)
 		end
 	end
 	
-	CTRL.mouseX, CTRL.mouseY = love.mouse.getPosition()
+	CTRL.mouseX, CTRL.mouseY = TLfres.getMousePosition(800, 600) --love.mouse.getPosition()
 	--game physics
 	if (game.status == PLAYING) then
 		gameLoop (dt)
@@ -297,6 +305,7 @@ function love.keypressed(key, unicode)
 end
 
 function love.mousepressed(x, y, button)	
+	x,y=TLfres.getMousePosition (800,600)
 	if (game.status == PLAYING) then 
 		ingameMenuMousePressed (x,y, button)	
 		if (button==1) then CTRL.mouseB1 = true end

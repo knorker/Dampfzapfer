@@ -1,4 +1,5 @@
-﻿----------------------------------------------------------  BUTTONS ----------------------------------------------
+﻿local TLfres = require "tlfres"
+----------------------------------------------------------  BUTTONS ----------------------------------------------
 function point_in_rect (x1, y1, x2, y2, px, py)
 	if (px > x1 and px < x2 and py > y1 and py < y2) then return true end
 	return false
@@ -7,7 +8,7 @@ end
 function drawButtons (b)
 	--font:setLineHeight (1.0)
 	--love.graphics.setFont(small_font)
-	local mousex, mousey = love.mouse.getPosition()
+	local mousex, mousey = TLfres.getMousePosition(800, 600) --love.mouse.getPosition()
 	for i = 1, #b, 1 do
 		--love.graphics.print(b[i].text, b[i].x+10, b[i].y+b[i].h-5) --0.6.2		
 		if (b[i].bitmap) then
@@ -64,15 +65,15 @@ function addButton (buttonlist, x,y, w, h, text, name, bitmap, overBitmap, highl
 end
 
 function clickedButton (b, mousex, mousey)
---local mousex, mousey = love.mouse.getPosition()
-local click = love.mouse.isDown(1)
-if (mouse_was_down==false and click == false) then return "NOBUTTONCLICKED" end
-for i = 1, #b, 1 do	
-	--if (mouse_was_down and click == false and point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then mouse_was_down=false return b[i].name, i end
-	--if (mouse_was_down == false and click == true and point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then mouse_was_down = true end
-	if (point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then return b[i].name, i end
+	--local mousex, mousey = love.mouse.getPosition()
+	local click = love.mouse.isDown(1)
+	if (mouse_was_down==false and click == false) then return "NOBUTTONCLICKED" end
+	for i = 1, #b, 1 do	
+		--if (mouse_was_down and click == false and point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then mouse_was_down=false return b[i].name, i end
+		--if (mouse_was_down == false and click == true and point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then mouse_was_down = true end
+		if (point_in_rect (b[i].x, b[i].y, b[i].x+b[i].w, b[i].y+b[i].h,  mousex, mousey)) then return b[i].name, i end
 	end
-return "NOBUTTONCLICKED"
+	return "NOBUTTONCLICKED"
 end
 
 --highlights one button, de-highlights all other buttons (like radio buttons)

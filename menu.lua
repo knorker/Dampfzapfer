@@ -28,6 +28,7 @@ function toMenu()
 end
 
 function drawMenu ()	
+	love.graphics.setColor(1, 1, 1, 1)
 	love.graphics.draw(GFX.menuBG, 0,0)
 	love.graphics.draw(GFX.logo, 200,25)
 	--[[
