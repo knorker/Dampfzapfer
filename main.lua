@@ -119,6 +119,8 @@ function newPS (px,py, direction, PStype)
 end
 
 function love.load()
+	love.window.setTitle ("Dampfzapfer")
+
 	GFX.wallTile = love.graphics.newImage("wall.png")
 	GFX.pipeVTile = love.graphics.newImage("pipeV.png")
 	GFX.pipeCornerTile = love.graphics.newImage("pipeCorner.png")
@@ -363,7 +365,7 @@ function startPlaying (level)
 	ingameButtons = {}
 	addButton (ingameButtons, 680,60, 112,64, "", "menu", love.graphics.newImage("buttons/menu.png"), love.graphics.newImage("buttons/over/menu.png"))
 	addButton (ingameButtons, 680,160, 112,64, "", "levelreset", love.graphics.newImage("buttons/neu.png"),love.graphics.newImage("buttons/over/neu.png"))
-	addButton (ingameButtons, 680,260, 112,64, "", "sound", love.graphics.newImage("buttons/sound_on.png"))
+	--addButton (ingameButtons, 680,260, 112,64, "", "sound", love.graphics.newImage("buttons/sound_on.png"))
 	addButton (ingameButtons, 680,360, 112,64, "", "music", love.graphics.newImage("buttons/music_on.png"), love.graphics.newImage("buttons/over/music_on.png"))
 --	addButton (ingameButtons, 680,480, 112,64, "", "music", love.graphics.newImage("buttons/music_on.png"), love.graphics.newImage("buttons/over/music_on.png"))
 	updateWorld()
